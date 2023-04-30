@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="animation.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        let bimg
+        let w = window.innerWidth
+        let h = window.innerHeight
+        function startgame() {
+            location.href="level3start.html"
+        }
+        function preload() {
+            bimg = loadImage('school.png')
+        }
+        function setup() {
+            createCanvas(w, h);
+            background(bimg)
+        }
+        function draw() {
+            background(bimg)
+        }
+    </script>
+    </head>
+    <body>
+        <button id="title" onclick="startgame()">Level 3</button>
+        <div id="level1intro">
+            You finally made it to campus but when you step outside of the bus, all eyes are on you. With only a couple seconds to spare, you must blast your way through school. Shot the paparazzi but don't let them reach your side!<br> Instructions: Use your mouse cursor to move character left and right. Click mouse to shot bullets.
+        </div>
+    </body>
+</html>

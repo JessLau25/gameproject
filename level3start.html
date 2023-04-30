@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js" integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="level3.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <link href="animation.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        let bullets = []
+        let enemies = []
+        let bimg;
+        let playerimg;
+        let enemyimg;
+        let bulletimg;
+        var score = 0
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        playa = new playa();
+
+    function startgame() {
+        location.href="final.html"
+    }
+    function retry() {
+        location.href="level3start.html"
+    }
+        function preload() {
+            bimg = loadImage('school.png')
+            playerimg = loadImage('mainchar.png');
+            bulletimg = loadImage('pointpen.png');
+            enemyimg = loadImage('final.png');
+            soundFormats('wav')
+            soundFormats('mp3')
+            levelup = loadSound('levelup.wav')
+            fail = loadSound('gameover.wav')
+            shotting = loadSound('shot.wav')
+            backgro = loadSound('finalmusic.mp3')
+        }
+        function setup() {
+            createCanvas(w, h);
+            background(bimg)
+            //spawns enemy and runs loop 30 times
+            for (let i=0; i<35; i++) {
+                let enemy = {
+                    x: random(250, w-250),
+                    y: random(-3000,-50)
+                }
+                enemies.push(enemy);
+            }
+            levelup.setVolume(1.0)
+            fail.setVolume(1.0)
+            shotting.setVolume(1.0)
+            backgro.setVolume(0.5)
+            backgro.play()
+        }
+        function draw() {
+            background(bimg)
+            playa.show()
+            playa.move()
+            //bullets
+            for(let bullet of bullets) {
+                //bullet speed
+                bullet.y -= 14
+                //if the bullets are shot pass the screen, it does not count or hit future enemys
+                if(bullet.y <= 0) {
+                    bullets.splice(bullets.indexOf(bullet),1)
+                }
+                bullet.width = 20
+                bullet.height = 50
+                image(bulletimg,bullet.x,bullet.y,bullet.width,bullet.height)
+            }
+            for(let enemy of enemies) {
+                //speed of enemy
+                enemy.y += 3
+                enemy.width = 100
+                enemy.height = 80
+                image(enemyimg,enemy.x,enemy.y,enemy.width,enemy.height)
+                //stops the game when the enemy reaches the other side
+                if(enemy.y > h) {
+                document.getElementById('tryagain').innerHTML = "Game over";
+                document.getElementById('retrybutt').style.width = '18vw';
+                document.getElementById('retrybutt').style.height = '10vh';
+                document.getElementById('retrybutt').style.opacity = 1;
+                document.getElementById('retrybutt').innerHTML = "Retry Level";
+                backgro.stop();
+                fail.play();
+                noLoop();
+                }
+            }
+            //when enemy is hit by bullet
+            for(let enemy of enemies) {
+                for(let bullet of bullets){
+                    //colision test
+                    hit = collideRectRect(bullet.x,bullet.y,bullet.width,bullet.height,enemy.x,enemy.y,enemy.width,enemy.height)
+                    if (hit) {
+                        //gets rid of enemy and bullet when hit
+                        enemies.splice(enemies.indexOf(enemy), 1)
+                        bullets.splice(bullets.indexOf(bullet),1)
+                        score += 1
+                    }    
+                }
+            }
+            //when the score is 30, player wins
+            if (score == 35){
+                document.getElementById('winna').innerHTML = "You won!";
+                document.getElementById('level2butt').style.width = '18vw';
+                document.getElementById('level2butt').style.height = '10vh';
+                document.getElementById('level2butt').style.opacity = 1;
+                document.getElementById('level2butt').innerHTML = "Final";
+                backgro.stop();
+                levelup.play();
+               noLoop();
+            }
+        }
+        //bullets swan when mouse is pressed
+        function mousePressed() {
+            let bullet = {
+                x: mouseX,
+                y: h-250
+            };
+            bullets.push(bullet);
+            shotting.play();
+        }
+    </script>
+    <div id="tryagain"></div>
+    <div id="winna"></div>
+    <button id = "retrybutt" onclick = "retry()"></button>
+    <button id = "level2butt" onclick = "startgame()"></button>
+</body>
+</html>

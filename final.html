@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js" integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="animation.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+        function retry() {
+            location.href = "index.html"
+        }
+        function preload() {
+            soundFormats('mp3')
+            backgro = loadSound('lobby.mp3')
+        }
+        function setup() {
+            backgro.setVolume(0.5)
+            backgro.play()
+        }
+    </script>
+    <style>
+        body {
+            background-image: url('https://wallpapercave.com/wp/wp2954049.jpg');
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="level1intro">
+    Congratulations! You made it to class on time and got a perfect score on your exam! Your relationship with Bustin Jieber is also stable and although the paparazzi still follow you, Bustin has your back. The end!
+</div>
+<button id = "homebutt" onclick = "retry()">Home Page</button>
+</body>
+</html>

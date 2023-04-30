@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="animation.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        let bimg
+        let w = window.innerWidth
+        let h = window.innerHeight
+        function startgame() {
+            location.href="level2start.html"
+        }
+        function preload() {
+            bimg = loadImage('bus.png');
+        }
+        function setup() {
+            createCanvas(w, h);
+        }
+        function draw() {
+            background(bimg)
+        }
+    </script>
+    </head>
+    <body>
+        <button id="title" onclick="startgame()">Level 2</button>
+        <div id="level1intro">
+            You successfully make it on to the bus. On the bus, even more people recognize you! Take down 25 opponents in 25 seconds and you'll be on campus in no time! Make sure not to hit the bus driver or your score will go down. <br> Instructions: Use your your mouse cursor to move your fist. Hit the paparazzi, not the bus driver!
+        </div>
+    </body>
+</html>

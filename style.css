@@ -1,0 +1,297 @@
+h1 {
+    font-size: 10vw;
+    text-align: center;
+    color: yellow;
+    position: absolute;
+    left: 19vw;
+    text-shadow: 2px 2px 5px black;
+}
+#startButt {
+    background-color: rgb(213, 217, 0);
+    color: white;
+    width: 18vw;
+    position: absolute;
+    height: 10vh;
+    top: 45vh;
+    left: 40vw;
+    font-size: 3vw;
+    font-family: 'Press Start 2P', cursive;
+}
+#startButt:hover {
+    background-color: rgb(181, 184, 1);
+    cursor: pointer;
+}
+#undo {
+    animation-name: fadeindout;
+    animation-duration: 8s;
+    animation-delay: 0.5s;
+    opacity: 0%;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    padding-top: 1vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 55vw;
+    height: 20vh;
+    top: 3%;
+    position: absolute;
+    font-size: 2vw;
+    text-align: center;
+    left: 20vw;
+    background-color: rgb(231, 231, 231);
+}
+#dosdo {
+    animation-name: fadeindout;
+    animation-duration: 8s;
+    animation-delay: 8.5s;
+    opacity: 0%;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    padding-top: 1vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 55vw;
+    height: 20vh;
+    top: 3%;
+    position: absolute;
+    font-size: 2vw;
+    text-align: center;
+    left: 20vw;
+    background-color: rgb(231, 231, 231);
+}
+#trese {
+    animation-name: fadeindout;
+    animation-duration: 5s;
+    animation-delay: 17s;
+    opacity: 0%;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    padding-top: 1vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 55vw;
+    height: 20vh;
+    top: 3%;
+    position: absolute;
+    font-size: 2vw;
+    text-align: center;
+    left: 20vw;
+    background-color: rgb(231, 231, 231);
+}
+#cuatro {
+    animation-name: fadein;
+    animation-duration: 4s;
+    animation-delay: 23s;
+    opacity: 0%;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    padding-top: 1vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 55vw;
+    height: 20vh;
+    top: 3%;
+    position: absolute;
+    font-size: 2vw;
+    text-align: center;
+    left: 20vw;
+    background-color: rgb(231, 231, 231);
+}
+#introBustin {
+    animation-name: Bustin;
+    animation-duration: 16s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    position: absolute;
+    top: 15vh;
+    left: 20vw;
+    opacity: 0;
+}
+#heart {
+    animation-name: heart;
+    animation-duration: 16s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    position: absolute;
+    top: 45vh;
+    left: 55vw;
+    opacity: 0;
+}
+#level1 {
+    width: 7vw;
+    left: 90vw;
+    position: absolute;
+    cursor: pointer;
+    animation-name: fadein;
+    animation-duration: 2s;
+    animation-delay: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+#world {
+    animation-name: world;
+    animation-duration: 9s;
+    animation-delay: 8s;
+    opacity: 0%;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    top: 40vh;
+    width: 35vw;
+    left: 35vw;
+    position: absolute;
+}
+#exam {
+    animation-name: fadeindout;
+    animation-duration: 5s;
+    animation-delay: 17s;
+    opacity: 0%;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    top: 30vh;
+    left: 45vw;
+    position: absolute;
+}
+#paparazi1 {
+    animation-name: fadein;
+    animation-duration: 5s;
+    animation-delay: 22.5s;
+    opacity: 0%;
+    animation-iteration-count: forward;
+    animation-fill-mode: forwards;
+    top: 30vh;
+    left: 40vw;
+    position: absolute;
+}
+#level1intro {
+    background-color:rgb(231, 231, 231);
+    border-width: 0.1vw;
+    border-color: black;
+    border-style: solid;
+    animation-name: fadein;
+    animation-duration: 3s;
+    opacity: 0%;
+    animation-iteration-count: forward;
+    animation-fill-mode: forwards;
+    width: 50vw;
+    top: 18vh;
+    left: 26vw;
+    text-align: center;
+    font-size: 2vw;
+    position: absolute;
+}
+#title {
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-delay: 5s;
+    opacity: 0%;
+    animation-iteration-count: forward;
+    animation-fill-mode: forwards;
+    width: 18vw;
+    height: 7vh;
+    top: 52vh;
+    left: 42vw;
+    text-align: center;
+    font-size: 2vw;
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+}
+#level2butt {
+    background-color:rgb(231, 231, 231);
+    border-width: 0.1vw;
+    border-color: black;
+    border-style: solid;
+    width: 0vw;
+    height: 0vh;
+    top: 52vh;
+    left: 42vw;
+    text-align: center;
+    font-size: 2vw;
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+    opacity: 0;
+}
+#level2butt:hover {
+    background-color:rgb(181, 181, 181);
+    cursor: pointer;
+}
+#retrybutt {
+    background-color:rgb(231, 231, 231);
+    border-width: 0.1vw;
+    border-color: black;
+    border-style: solid;
+    width: 0vw;
+    height: 0vh;
+    top: 42vh;
+    left: 42vw;
+    text-align: center;
+    font-size: 2vw;
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+    opacity: 0;
+}
+#retrybutt:hover {
+    background-color:rgb(181, 181, 181);
+    cursor: pointer;
+}
+#homebutt {
+    background-color:rgb(231, 231, 231);
+    border-width: 0.1vw;
+    border-color: black;
+    border-style: solid;
+    width: 18vw;
+    height: 10vh;
+    top: 62vh;
+    left: 42vw;
+    text-align: center;
+    font-size: 2vw;
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    opacity: 0%;
+    animation-iteration-count: forward;
+    animation-fill-mode: forwards;
+}
+#homebutt:hover {
+    background-color:rgb(181, 181, 181);
+    cursor: pointer;
+}
+#scoreboard {
+    width: 10vw;
+    height: 6vh;
+    top: 1vh;
+    text-align: left;
+    font-size: 2vw;
+    position: absolute;
+    background-color:rgb(231, 231, 231);
+    border-width: 0.1vw;
+    border-color: black;
+    border-style: solid;
+}
+#tryagain {
+    height: 10vh;
+    width: 30vw;
+    z-index: 7;
+    top: 20vh;
+    left: 40vw;
+    font-size: 5vw;
+    color: red;
+    position: absolute;
+    text-shadow: 2px 2px 5px black;
+}
+#winna {
+    height: 10vh;
+    width: 30vw;
+    z-index: 7;
+    top: 20vh;
+    left: 40vw;
+    font-size: 5vw;
+    color: green;
+    position: absolute;
+    text-shadow: 2px 2px 5px black;
+}

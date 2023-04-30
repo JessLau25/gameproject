@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js" integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="animation.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            position: fixed;
+            background-color: rgb(245, 209, 246);
+        }
+    </style>
+    <script>
+        function level1() {
+        if (window.confirm("Skip Intro?")===true) {
+            location.href="level1.html"
+        }
+        else{
+        }
+        }
+        function preload() {
+            soundFormats('mp3')
+            backgro = loadSound('lobby.mp3')
+        }
+        function setup() {
+            backgro.setVolume(0.5)
+            backgro.play()
+        }
+    </script>
+</head>
+<body>
+    <div id="introBustin"><img src="bustin.png" width="800vw"></div>
+        <div id="undo">
+            Imagine you are an ordinary person in 2010 who is secretly dating Bustin Jieber, 
+            the biggest popstar of the time. You've been in an on and off secret relationship for about four 
+            years now.
+        </div>
+        <div id="heart"><img src="heart.png"></div>
+        <div id="dosdo">
+            One day, Bustin commits and confirms your relationship to the world and you instantly become
+            the greatest sensation of the gossip groups and celebrity news.
+        </div>
+        <div id="world"><img src="world.png"></div>
+        <div id="trese">
+            The day he announces your relationship to the world is the day you have the greatest exam of 
+            your life!
+        </div>
+        <div id="exam"><img src="https://cdn0.iconfinder.com/data/icons/education-70/512/Examtest-1024.png" width="500vw"></div>
+        <div id="cuatro">
+            It is your challenge to make it to class in time before the paparazzis
+            swarm over you.
+        </div>
+        <div id="paparazi1"><img src="https://www.pngall.com/wp-content/uploads/2017/01/Paparazzi-PNG-File.png" width="500vw"></div>
+    <img src="forwardarrow.png" id="level1" onclick="level1()"></img>
+</body>
+</html>

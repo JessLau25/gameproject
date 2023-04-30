@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js" integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="level2.js"></script>
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="scoreboard">
+        score: 0
+    </div>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        let bimg;
+        let papaimg = [];
+        let boxerimg;
+        let score = 0
+        let w = window.innerWidth
+        let h = window.innerHeight
+        let hit = false
+        var ityou = new ityou()
+        var notyou = new notyou()
+        let busdrive;
+        var busyou = new busyou()
+
+        function startgame() {
+        location.href="level3.html"
+    }
+    function retry() {
+        location.href="level2start.html"
+    }
+    //timer function to make a time limit. If time limit reaches with score being less than 25, player lose
+        function timer() {
+            if(score < 25) {
+                document.getElementById('tryagain').innerHTML = "Game over";
+                document.getElementById('retrybutt').style.width = '18vw';
+                document.getElementById('retrybutt').style.height = '10vh';
+                document.getElementById('retrybutt').style.opacity = 1;
+                document.getElementById('retrybutt').innerHTML = "Retry Level";
+                fail.play();
+                noLoop();
+            }
+        }
+        function preload() {
+            bimg = loadImage('bus.png');
+            boxerimg = loadImage('boxing.png');
+            busdrive = loadImage('busdriver.png');
+            papaimg[0] = loadImage('camera.png');
+            papaimg[1] = loadImage('papa.png');
+            papaimg[2] = loadImage('microphone.png');
+            soundFormats('wav')
+            levelup = loadSound('levelup.wav')
+            fail = loadSound('gameover.wav')
+            punch = loadSound('punchsound.wav')
+            ouch = loadSound('maninpain.wav')
+        }
+        function setup() {
+            createCanvas(w,h)
+            levelup.setVolume(1.0)
+            fail.setVolume(1.0)
+            punch.setVolume(1.0)
+            ouch.setVolume(1.0)
+            setTimeout(timer, 25000);
+            papaimgs = papaimg[1]
+        }
+
+        function draw() {
+            ityou.x = mouseX
+            ityou.y = mouseY
+            background(bimg)
+            ityou.show()
+            notyou.show(papaimgs)
+            busyou.show()
+            //if score >= 25, player wins
+            if (score >= 25) {
+                document.getElementById('winna').innerHTML = "You won!";
+                document.getElementById('level2butt').style.width = '18vw';
+                document.getElementById('level2butt').style.height = '10vh';
+                document.getElementById('level2butt').style.opacity = 1;
+                document.getElementById('level2butt').innerHTML = "Level 3";
+                levelup.play();
+                noLoop();
+            }
+            //collision test for parazzi
+            hit = collideRectRect(mouseX-ityou.width/2,mouseY-ityou.height/2,200,200,notyou.x,notyou.y,200,200)
+            //if player hits paparazzi
+            if (hit === true) {
+                //changes picture 
+                papaimgs = papaimg[round(random(2))]
+                //sets the enemys and bus driver position to random spot each time it hits//
+                notyou.x = random(150,w-150)
+                notyou.y = random(150,h-150)
+                busyou.x = random(150,w-150)
+                busyou.y = random(150,h-150)
+                //each time you hit it the score increases//
+                document.getElementById("scoreboard").innerHTML = "score: 0";
+                score += 1
+                document.getElementById("scoreboard").innerHTML = "score: " + score;
+                punch.play();
+            }
+            //collision test for bus driver
+            hitbus = collideRectRect(mouseX-ityou.width/2,mouseY-ityou.height/2,200,200,busyou.x,busyou.y,200,200)
+            if (hitbus === true) {
+                //sets the enemy and bus driver spot to random position
+                notyou.x = random(150,w-150)
+                notyou.y = random(150,h-150)
+                busyou.x = random(150,w-150)
+                busyou.y = random(150,h-150)
+                //each time you hit it the score decreases//
+                document.getElementById("scoreboard").innerHTML = "score: 0";
+                score -= 1
+                document.getElementById("scoreboard").innerHTML = "score: " + score;
+                ouch.play();
+            }
+        }
+    </script>
+    <div id="tryagain"></div>
+    <div id="winna"></div>
+    <button id = "retrybutt" onclick = "retry()"></button>
+    <button id = "level2butt" onclick = "startgame()"></button>
+</body>
+</html>

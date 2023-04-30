@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="level1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js" integrity="sha512-WJXVjqeINVpi5XXJ2jn0BSCfp0y80IKrYh731gLRnkAS9TKc5KNt/OfLtu+fCueqdWniouJ1ubM+VI/hbo7POQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="animation.css" rel="stylesheet" type="text/css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let bimg;
+        let playerimg;
+        let enemyimg;
+        var score = 0
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        jumper = new jumper();
+        enemy = new enemyyo();
+
+    function startgame() {
+        location.href="level2.html"
+    }
+    function reset1() {
+        console.log('error')
+        location.href="level1start.html"
+    }
+    function preload() {
+        bimg = loadImage('hipo.png');
+        playerimg = loadImage('mainchar.png');
+        enemyimg = loadImage('banana.png');
+        soundFormats('wav')
+        soundFormats('mp3')
+        levelup = loadSound('levelup.wav')
+        fail = loadSound('gameover.wav')
+        jumppy = loadSound('jumpsound.wav')
+        backgro = loadSound('monkey.mp3')
+    }
+    function setup() {
+        createCanvas(w, h);
+        levelup.setVolume(1.0)
+        fail.setVolume(1.0)
+        jumppy.setVolume(1.0)
+        backgro.setVolume(0.5)
+        backgro.play()
+    }
+    function draw() {
+        background(bimg)
+        enemy.move()
+        enemy.show()
+        jumper.show()
+        jumper.update()
+        //enemy moving faster each time it reaches the left and resets back to the right side
+        if (enemy.x < 0) {
+            enemy.x = w
+            enemy.speed += 2
+            score += 1
+        }
+        //collision detection and lost function
+            hit = collideRectCircle(jumper.x,jumper.y,jumper.width,jumper.height, enemy.x + enemy.width/2,enemy.y + enemy.height/2,enemy.width)
+            if (hit) {
+                document.getElementById('tryagain').innerHTML = "Game over";
+                document.getElementById('retrybutt').style.width = '18vw';
+                document.getElementById('retrybutt').style.height = '10vh';
+                document.getElementById('retrybutt').style.opacity = 1;
+                document.getElementById('retrybutt').innerHTML = "Retry Level";
+                backgro.stop()
+                fail.play();
+                noLoop();
+            }
+            //if score reaches 15, win function
+            if (score == 15){
+                document.getElementById('winna').innerHTML = "You won!";
+                document.getElementById('level2butt').style.width = '18vw';
+                document.getElementById('level2butt').style.height = '10vh';
+                document.getElementById('level2butt').style.opacity = 1;
+                document.getElementById('level2butt').innerHTML = "Level 2";
+                backgro.stop()
+                levelup.play();
+                noLoop();
+            }
+        }
+        //to press on space bar
+    function keyPressed() {
+        //prevent player from cheating by pressing on key multiple times
+        if (keyCode === 32) {
+            if(jumper.y < h-450) {
+            }
+            else {
+                jumper.jump()
+            }
+        }
+    }
+    </script>
+    <div id="tryagain"></div>
+    <div id="winna"></div>
+    <button id = "retrybutt" onclick = "reset1()"></button>
+    <button id = "level2butt" onclick = "startgame()"></button>
+</body>
+</html>
